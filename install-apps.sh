@@ -18,6 +18,8 @@ wget -O discord.deb https://discord.com/api/download?platform=linux&format=deb
 sudo dpkg -i discord.deb
 sudo apt-get install -f
 
+echo "Installing Curl"
+sudo apt install curl
 echo "Installing Vencord"
 sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
 
