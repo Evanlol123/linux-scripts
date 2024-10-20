@@ -1,21 +1,30 @@
 #!/bin/bash
 
-#install python and bluetooth
+echo "Installing Bluetooth and Python"
 sudo apt install default-jdk python3 python3-pip blueman libspa-0.2-bluetooth
 
-#install google chrome
+echo "Installing Google Chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt-get install -f
 
-# Install Spotify
+echo "Installing Spotify"
 wget -qO - https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list > /dev/null
 sudo apt-get update && sudo apt-get install spotify-client
 
-#install steam
+echo "Installing Discord"
+wget -O discord.deb https://discord.com/api/download?platform=linux&format=deb
+sudo dpkg -i discord.deb
+sudo apt-get install -f
+
+echo "Installing Vencord"
+sh -c "$(curl -sS https://raw.githubusercontent.com/Vendicated/VencordInstaller/main/install.sh)"
+
+echo "Installing Steam"
 sudo apt install steam
 steam
+echo "Fixing bwrap"
 set -e 
 if [ ! "$HOME_DIR" ]; then 
 sudo HOME_DIR="$HOME" $0 
@@ -32,4 +41,5 @@ for bwrap_bin in $steam_bwraps; do
 cp /usr/bin/bwrap "$bwrap_bin" 
 fix_perms "$bwrap_bin" 
 done
+cd
 steam
