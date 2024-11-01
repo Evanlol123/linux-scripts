@@ -3,10 +3,8 @@
 echo "Installing Bluetooth and Python"
 sudo apt install default-jdk python3 python3-pip blueman libspa-0.2-bluetooth
 
-echo "Installing Google Chrome"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install -f
+echo "Installing Firefox"
+sudo apt install firefox-esr
 
 echo "Installing Spotify"
 wget -qO - https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
